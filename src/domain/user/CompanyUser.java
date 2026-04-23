@@ -9,4 +9,12 @@ public class CompanyUser extends User {
         this.companyName = companyName;
         this.taxId = taxId;
     }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public String getTaxId() {
+        return taxId;
+    }
 }
