@@ -1,13 +1,8 @@
-package domain.model;
+package domain.resource;
 
-import domain.value.Money;
+import money.Money;
 
 public class Desk extends Resource {
-    public enum DeskType {
-        HOT,
-        FIXED
-    }
-
     private final DeskType type;
 
     public Desk(String name, DeskType type) {

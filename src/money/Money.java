@@ -1,4 +1,4 @@
-package domain.value;
+package money;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

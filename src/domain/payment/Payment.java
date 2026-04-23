@@ -1,4 +1,4 @@
-package domain.model;
+package domain.payment;
 
 public class Payment {
 }

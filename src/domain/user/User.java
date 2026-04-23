@@ -1,4 +1,4 @@
-package domain.model;
+package domain.user;
 
 public abstract class User {
     private final String email;

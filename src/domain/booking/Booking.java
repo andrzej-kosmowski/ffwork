@@ -1,15 +1,14 @@
-package domain.model;
+package domain.booking;
 
-import domain.value.Money;
+import domain.payment.Payment;
+import domain.resource.Resource;
+import domain.user.User;
+import money.Money;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
 
 public class Booking {
-    public enum BookingStatus {
-        PENDING, CONFIRMED, CANCELLED, COMPLETED
-    }
-
     private final String id;
     private final User user;
     private final Resource resource;

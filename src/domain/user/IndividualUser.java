@@ -1,4 +1,4 @@
-package domain.model;
+package domain.user;
 
 public class IndividualUser extends User {
     private String studentId;

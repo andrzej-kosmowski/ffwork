@@ -1,6 +1,6 @@
-package domain.model;
+package domain.resource;
 
-import domain.value.Money;
+import money.Money;
 
 public abstract class Resource {
     private final String name;

@@ -1,4 +1,4 @@
-package domain.model;
+package domain.user;
 
 public class CompanyUser extends User {
     private final String companyName;
