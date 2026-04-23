@@ -1,6 +1,6 @@
 package domain.booking;
 
-import domain.payment.Payment;
+import payment.Payment;
 import domain.resource.Resource;
 import domain.user.User;
 import money.Money;

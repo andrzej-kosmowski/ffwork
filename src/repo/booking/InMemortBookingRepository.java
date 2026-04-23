@@ -1,4 +1,4 @@
-package domain.booking.repository;
+package repo.booking;
 
 import domain.booking.Booking;
 import domain.resource.Resource;

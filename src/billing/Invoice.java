@@ -1,4 +1,4 @@
-package domain.invoice;
+package billing;
 
 import domain.user.User;
 import money.Money;

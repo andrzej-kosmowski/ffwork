@@ -1,4 +1,4 @@
-package domain.user.repository;
+package repo.user;
 
 import domain.user.User;
 

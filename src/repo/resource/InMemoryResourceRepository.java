@@ -1,4 +1,4 @@
-package domain.resource.repository;
+package repo.resource;
 
 import domain.resource.Resource;
 

@@ -1,4 +1,4 @@
-package domain.pricing;
+package pricing;
 
 import domain.booking.Booking;
 import money.Money;

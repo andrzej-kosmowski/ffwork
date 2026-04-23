@@ -1,8 +1,10 @@
-package domain.payment;
+package service;
 
 import domain.booking.Booking;
 import domain.booking.BookingStatus;
-import domain.booking.repository.BookingRepository;
+import repo.booking.BookingRepository;
+import payment.CardPayment;
+import payment.Payment;
 
 public class PaymentService {
     private final BookingRepository bookingRepo;

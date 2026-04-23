@@ -1,17 +1,14 @@
-package domain.service;
+package service;
 
 import domain.booking.Booking;
 import domain.booking.BookingStatus;
-import domain.booking.repository.BookingRepository;
-import domain.pricing.PricingPolicy;
+import repo.booking.BookingRepository;
+import pricing.PricingPolicy;
 import domain.resource.Device;
 import domain.resource.Resource;
-import domain.resource.repository.ResourceRepository;
 import domain.user.User;
-import domain.user.repository.UserRepository;
 import money.Money;
 
-import java.awt.print.Book;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;

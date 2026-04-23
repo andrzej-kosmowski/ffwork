@@ -1,17 +1,16 @@
-package domain.service;
+package report;
 
 import domain.booking.Booking;
 import domain.booking.BookingStatus;
-import domain.booking.repository.BookingRepository;
+import repo.booking.BookingRepository;
 import domain.resource.Resource;
-import domain.resource.repository.ResourceRepository;
+import repo.resource.ResourceRepository;
 import money.Money;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.time.Month;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;

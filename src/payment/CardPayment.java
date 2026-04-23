@@ -1,4 +1,4 @@
-package domain.payment;
+package payment;
 
 import money.Money;
 

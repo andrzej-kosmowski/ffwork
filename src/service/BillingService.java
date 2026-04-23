@@ -1,5 +1,7 @@
-package domain.invoice;
+package service;
 
+import billing.Billable;
+import billing.Invoice;
 import domain.booking.Booking;
 
 import java.time.LocalDateTime;
