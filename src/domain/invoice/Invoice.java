@@ -10,7 +10,7 @@ public record Invoice(String invoiceNumber, LocalDateTime issueDate, User buyer,
 
     @Override
     public String toString() {
-        return String.format("Invoice %s%mDate: %s%nBuyer: %s%nAmount: %s%nDescription: %s",
+        return String.format("Invoice %s%Date: %s%nBuyer: %s%nAmount: %s%nDescription: %s",
                 invoiceNumber,
                 issueDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")),
                 buyer,
