@@ -10,6 +10,10 @@ public class StandardPricing implements PricingPolicy {
 
     @Override
     public Money price(Booking booking) {
+        return calcBasePrice(booking);
+    }
+
+    protected static Money calcBasePrice(Booking booking) {
         BigDecimal hourlyRate = booking.getResource().hourlyRate().amount();
         BigDecimal pricePerMinute = hourlyRate.divide(BigDecimal.valueOf(60), 10, RoundingMode.HALF_UP);
         BigDecimal total = pricePerMinute.multiply(
