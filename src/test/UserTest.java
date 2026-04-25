@@ -9,8 +9,9 @@ import repo.user.InMemoryUserRepository;
 
 import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 public class UserTest {
     private InMemoryUserRepository repo;
@@ -37,13 +38,13 @@ public class UserTest {
     @Test
     void shouldListAllUsers() {
         repo.add(new IndividualUser("a@b.com", "A"));
-        repo.add(new CompanyUser("c@d.com", "B", "Company", "123-456-78-90"));
+        repo.add(new CompanyUser("c@d.com", "B", "Company", "123-456-78-90", 1));
         assertEquals(2, repo.findAll().size());
     }
 
     @Test
     void shouldHaveCompanyFields() {
-        CompanyUser cu = new CompanyUser("company@x.com", "CompanyB", "CompanyB", "123-456-78-90");
+        CompanyUser cu = new CompanyUser("company@x.com", "CompanyB", "CompanyB", "123-456-78-90", 1);
         assertEquals("CompanyB", cu.getCompanyName());
         assertEquals("123-456-78-90", cu.getTaxId());
     }

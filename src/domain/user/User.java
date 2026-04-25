@@ -1,6 +1,10 @@
 package domain.user;
 
-public abstract class User {
+import discount.Discount;
+import discount.Discountable;
+import discount.NoDiscount;
+
+public abstract class User implements Discountable {
     private final String email;
     private final String displayName;
 
@@ -20,5 +24,10 @@ public abstract class User {
     @Override
     public String toString() {
         return displayName + " (" + email + ")";
+    }
+
+    @Override
+    public Discount getDiscount() {
+        return new NoDiscount();
     }
 }
