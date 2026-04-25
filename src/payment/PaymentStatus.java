@@ -1,5 +1,5 @@
 package payment;
 
 public enum PaymentStatus {
-    INITIATED, CAPTURED
+    INITIATED, CAPTURED, REFUNDED
 }
