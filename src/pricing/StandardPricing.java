@@ -10,7 +10,11 @@ public class StandardPricing implements PricingPolicy {
 
     @Override
     public Money price(Booking booking) {
-        return calcBasePrice(booking);
+        Money base = calcBasePrice(booking);
+
+        return booking.getUser()
+                .getDiscount()
+                .applyDiscount(base, booking);
     }
 
     protected static Money calcBasePrice(Booking booking) {

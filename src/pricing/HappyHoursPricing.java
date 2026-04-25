@@ -32,7 +32,11 @@ public class HappyHoursPricing implements PricingPolicy {
                     .multiply(BigDecimal.valueOf(happyMinutes))
                     .multiply(BigDecimal.valueOf(1 - DISCOUNT));
 
-        return new Money(normalPrice.add(happyPrice));
+        Money base = new Money(normalPrice.add(happyPrice));
+
+        return booking.getUser()
+                .getDiscount()
+                .applyDiscount(base, booking);
     }
 
     private BigDecimal pricePerMinute(Booking booking) {
