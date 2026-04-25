@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public class InMemortBookingRepository implements BookingRepository {
+public class InMemoryBookingRepository implements BookingRepository {
     private final Map<String, Booking> bookings = new HashMap<>();
 
 

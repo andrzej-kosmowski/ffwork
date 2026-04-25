@@ -7,8 +7,8 @@ import java.util.*;
 public class InMemoryResourceRepository implements ResourceRepository {
     private final Map<String, Resource> resources = new HashMap<>();
     @Override
-    public void add(Resource r) {
-        resources.put(r.getName(), r);
+    public void add(Resource resource) {
+        resources.put(resource.getName(), resource);
     }
 
     @Override

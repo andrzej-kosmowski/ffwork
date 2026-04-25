@@ -25,11 +25,11 @@ public class BookingService {
         this.pricingPolicy = pricingPolicy;
     }
 
-    public Booking book(User u, Resource r, LocalDateTime start, LocalDateTime end) {
+    public Booking book(User user, Resource resource, LocalDateTime start, LocalDateTime end) {
         validateTime(start, end);
-        checkCollisions(r, start, end);
+        checkCollisions(resource, start, end);
         String id = generateId(start);
-        Booking booking = new Booking(id, u, r, start, end, BookingStatus.PENDING, null);
+        Booking booking = new Booking(id, user, resource, start, end, BookingStatus.PENDING, null);
         Money base = pricingPolicy.price(booking);
         booking.setCalculatedPrice(base);
 
@@ -37,36 +37,36 @@ public class BookingService {
         return booking;
     }
 
-    public Booking book(User u, Resource r, LocalDateTime start, int durationMinutes) {
+    public Booking book(User user, Resource resource, LocalDateTime start, int durationMinutes) {
         LocalDateTime end = start.plusMinutes(durationMinutes);
-        return book(u, r, start, end);
+        return book(user, resource, start, end);
     }
 
     public void confirm(String bookingId) {
-        Booking b = getOrThrow(bookingId);
-        if (b.getStatus() != BookingStatus.PENDING) {
+        Booking booking = getOrThrow(bookingId);
+        if (booking.getStatus() != BookingStatus.PENDING) {
             throw new IllegalStateException("Only PENDING can be confirmed");
         }
 
-        b.setStatus(BookingStatus.CONFIRMED);
+        booking.setStatus(BookingStatus.CONFIRMED);
     }
 
     public void cancel(String bookingId) {
-        Booking b = getOrThrow(bookingId);
-        if (b.getStatus() == BookingStatus.COMPLETED) {
+        Booking booking = getOrThrow(bookingId);
+        if (booking.getStatus() == BookingStatus.COMPLETED) {
             throw new IllegalStateException("Cannot cancel completed booking");
         }
 
-        b.setStatus(BookingStatus.CANCELLED);
+        booking.setStatus(BookingStatus.CANCELLED);
     }
 
     public void complete(String bookingId) {
-        Booking b = getOrThrow(bookingId);
-        if (b.getStatus() != BookingStatus.CONFIRMED) {
+        Booking booking = getOrThrow(bookingId);
+        if (booking.getStatus() != BookingStatus.CONFIRMED) {
             throw new IllegalStateException("Only CONFIRMED can be completed");
         }
 
-        b.setStatus(BookingStatus.COMPLETED);
+        booking.setStatus(BookingStatus.COMPLETED);
     }
 
     public List<Booking> list() {
@@ -105,8 +105,8 @@ public class BookingService {
         }
     }
 
-    private boolean overlaps(Booking b, LocalDateTime start, LocalDateTime end) {
-        return b.getStart().isBefore(end) && start.isBefore(b.getEnd());
+    private boolean overlaps(Booking booking, LocalDateTime start, LocalDateTime end) {
+        return booking.getStart().isBefore(end) && start.isBefore(booking.getEnd());
     }
 
     private String generateId(LocalDateTime start) {

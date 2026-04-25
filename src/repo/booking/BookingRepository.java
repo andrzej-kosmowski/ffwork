@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface BookingRepository {
-    void add(Booking b);
+    void add(Booking booking);
     Optional<Booking> findById(String id);
     List<Booking> findAll();
-    List<Booking> findByResource(Resource r);
-    List<Booking> findByUser(User u);
+    List<Booking> findByResource(Resource resource);
+    List<Booking> findByUser(User uuser);
 }

@@ -29,12 +29,12 @@ public record Money(BigDecimal amount) implements Comparable<Money> {
         return new Money(this.amount.subtract(other.amount));
     }
 
-    public Money multiply(BigDecimal m) {
-        return new Money(this.amount.multiply(m));
+    public Money multiply(BigDecimal multiplier) {
+        return new Money(this.amount.multiply(multiplier));
     }
 
-    public Money multiply(double m) {
-        return multiply(BigDecimal.valueOf(m));
+    public Money multiply(double multiplier) {
+        return multiply(BigDecimal.valueOf(multiplier));
     }
 
     @Override
@@ -43,7 +43,7 @@ public record Money(BigDecimal amount) implements Comparable<Money> {
     }
 
     @Override
-    public int compareTo(Money o) {
-        return this.amount.compareTo(o.amount);
+    public int compareTo(Money money) {
+        return this.amount.compareTo(money.amount);
     }
 }

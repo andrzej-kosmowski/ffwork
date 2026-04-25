@@ -7,8 +7,8 @@ import java.util.*;
 public class InMemoryUserRepository implements UserRepository {
     private final Map<String, User> users = new HashMap<>();
     @Override
-    public void add(User u) {
-        users.put(u.getEmail(), u);
+    public void add(User user) {
+        users.put(user.getEmail(), user);
     }
 
     @Override
