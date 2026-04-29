@@ -2,6 +2,8 @@ package domain.resource;
 
 import money.Money;
 
+import java.util.Objects;
+
 public class Desk extends Resource {
     private static final Money FIXED_BASE_RATE = Money.of("25.00");
     private static final Money HOT_BASE_RATE = Money.of("25.00");
@@ -10,12 +12,12 @@ public class Desk extends Resource {
 
     public Desk(String name, DeskType type) {
         super(name);
-        this.type = type;
+        this.type = Objects.requireNonNull(type, "type cannot be null");
     }
 
     public Desk(String name, Money customHourlyRate, DeskType type) {
         super(name, customHourlyRate);
-        this.type = type;
+        this.type = Objects.requireNonNull(type, "type cannot be null");
     }
 
     @Override

@@ -2,12 +2,17 @@ package payment;
 
 import money.Money;
 
+import java.util.Objects;
+
 public class CardPayment extends Payment {
     private final String last4;
 
     public CardPayment(Money amount, String paymentId, String last4) {
         super(amount, paymentId);
-        this.last4 = last4;
+        if (!last4.matches("\\d{4}")) {
+            throw new IllegalArgumentException("last4 must be exactly 4 digits");
+        }
+        this.last4 = Objects.requireNonNull(last4, "last4 cannot be null");
     }
 
     @Override

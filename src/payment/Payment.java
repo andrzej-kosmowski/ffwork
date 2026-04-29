@@ -2,14 +2,16 @@ package payment;
 
 import money.Money;
 
+import java.util.Objects;
+
 public abstract class Payment {
     private final Money amount;
     private final String paymentId;
     private PaymentStatus status;
 
     public Payment(Money amount, String paymentId) {
-        this.amount = amount;
-        this.paymentId = paymentId;
+        this.amount = Objects.requireNonNull(amount, "amount cannot be null");
+        this.paymentId = Objects.requireNonNull(paymentId, "paymentId cannot be null");
         this.status = PaymentStatus.INITIATED;
     }
 

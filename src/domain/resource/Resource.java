@@ -2,6 +2,8 @@ package domain.resource;
 
 import money.Money;
 
+import java.util.Objects;
+
 public abstract class Resource {
     private final String name;
     private final Money customHourlyRate;
@@ -12,7 +14,7 @@ public abstract class Resource {
     }
 
     public Resource(String name, Money customHourlyRate) {
-        this.name = name;
+        this.name = Objects.requireNonNull(name, "name cannot be null");
         this.customHourlyRate = customHourlyRate;
     }
 

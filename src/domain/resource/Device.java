@@ -9,11 +9,17 @@ public class Device extends Resource {
 
     public Device(String name, int quantity) {
         super(name);
+        if (quantity <= 0) {
+            throw new IllegalArgumentException("quantity must be > 0");
+        }
         this.quantity = quantity;
     }
 
     public Device(String name, Money customHourlyRate, int quantity) {
         super(name, customHourlyRate);
+        if (quantity <= 0) {
+            throw new IllegalArgumentException("quantity must be > 0");
+        }
         this.quantity = quantity;
     }
 

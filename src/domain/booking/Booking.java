@@ -7,6 +7,7 @@ import money.Money;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 import static java.time.Duration.between;
 
@@ -25,12 +26,12 @@ public class Booking {
             throw new IllegalArgumentException("End must be after start");
         }
 
-        this.id = id;
-        this.user = user;
-        this.resource = resource;
-        this.start = start;
-        this.end = end;
-        this.status = status;
+        this.id = Objects.requireNonNull(id, "id cannot be null");
+        this.user = Objects.requireNonNull(user, "user cannot be null");
+        this.resource = Objects.requireNonNull(resource, "resource cannot be null");
+        this.start = Objects.requireNonNull(start, "start cannot be null");
+        this.end = Objects.requireNonNull(end, "end cannot be null");
+        this.status = Objects.requireNonNull(status, "status cannot be null");
         this.calculatedPrice = calculatedPrice;
         this.payment = null;
     }
