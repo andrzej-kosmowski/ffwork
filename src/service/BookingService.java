@@ -44,28 +44,16 @@ public class BookingService {
 
     public void confirm(String bookingId) {
         Booking booking = getOrThrow(bookingId);
-        if (booking.getStatus() != BookingStatus.PENDING) {
-            throw new IllegalStateException("Only PENDING can be confirmed");
-        }
-
         booking.confirm();
     }
 
     public void cancel(String bookingId) {
         Booking booking = getOrThrow(bookingId);
-        if (booking.getStatus() == BookingStatus.COMPLETED) {
-            throw new IllegalStateException("Cannot cancel completed booking");
-        }
-
         booking.cancel();
     }
 
     public void complete(String bookingId) {
         Booking booking = getOrThrow(bookingId);
-        if (booking.getStatus() != BookingStatus.CONFIRMED) {
-            throw new IllegalStateException("Only CONFIRMED can be completed");
-        }
-
         booking.complete();
     }
 
