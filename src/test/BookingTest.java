@@ -7,12 +7,10 @@ import domain.resource.Room;
 import domain.user.IndividualUser;
 import domain.user.User;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDateTime;
 import java.util.Set;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThrows;
 
 public class BookingTest {
     @Test
