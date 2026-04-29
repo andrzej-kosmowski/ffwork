@@ -14,7 +14,7 @@ public class Wallet {
     }
 
     public void withdraw(Money amount) {
-        if (balance.amount().compareTo(amount.amount()) < 0) {
+        if (balance.compareTo(amount) < 0) {
             throw new IllegalStateException("Not enough funds");
         }
         balance = balance.subtract(amount);
