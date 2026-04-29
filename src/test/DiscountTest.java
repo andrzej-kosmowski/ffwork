@@ -18,6 +18,7 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class DiscountTest {
     private Booking createBooking() {
@@ -76,14 +77,6 @@ public class DiscountTest {
     }
 
     @Test
-    void shouldApplyNoDiscount_CompanyUnknownTier() {
-        Discount discount = new CompanyTierDiscount(999);
-        Money result = discount.applyDiscount(Money.of("100.00"), createBooking());
-
-        assertEquals(Money.of("100.00"), result);
-    }
-
-    @Test
     void shouldReturnStudentDiscountWithId() {
         User user = new IndividualUser("test@mail.com", "Test", "123");
         Discount discount = user.getDiscount();
@@ -117,5 +110,12 @@ public class DiscountTest {
         Money result = discount.applyDiscount(Money.of("100.00"), createBooking());
 
         assertEquals(Money.of("90.00"), result);
+    }
+
+    @Test
+    void shouldThrowExceptionForUnknownCompanyTier() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new CompanyTierDiscount(999);
+        });
     }
 }
