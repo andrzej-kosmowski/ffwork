@@ -5,10 +5,10 @@ import discount.NoDiscount;
 import discount.StudentDiscount;
 
 public class IndividualUser extends User {
-    private String studentId;
+    private final String studentId;
 
     public IndividualUser(String email, String displayName) {
-        super(email, displayName);
+        this(email, displayName, null);
     }
 
     public IndividualUser(String email, String displayName, String studentId) {
