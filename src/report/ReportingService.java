@@ -2,6 +2,7 @@ package report;
 
 import domain.booking.Booking;
 import domain.booking.BookingStatus;
+import domain.resource.Device;
 import repo.booking.BookingRepository;
 import domain.resource.Resource;
 import repo.resource.ResourceRepository;
@@ -31,23 +32,17 @@ public class ReportingService {
         }
 
         long totalMinutes = Duration.between(from, to).toMinutes();
+        if (totalMinutes == 0) {
+            return Map.of();
+        }
 
         Map<Resource, Double> result = new LinkedHashMap<>();
 
         for (Resource resource : resourceRepo.findAll()) {
+            long usedMinutes = calculateUsedMinutes(resource, from, to);
+            long capacity = totalMinutes * getCapacity(resource);
 
-            long usedMinutes = 0;
-
-            List<Booking> bookings = bookingRepo.findByResource(resource);
-
-            for (Booking booking : bookings) {
-
-                if (!isActive(booking)) continue;
-
-                usedMinutes += overlapMinutes(booking, from, to);
-            }
-
-            double percent = (usedMinutes * 100.0) / totalMinutes;
+            double percent = (usedMinutes * 100.0) / capacity;
 
             result.put(resource, round(percent));
         }
@@ -88,6 +83,21 @@ public class ReportingService {
             total = total.add(booking.getCalculatedPrice());
         }
         return total;
+    }
+
+    private long calculateUsedMinutes(Resource resource, LocalDateTime from, LocalDateTime to) {
+        return bookingRepo.findByResource(resource)
+                .stream()
+                .filter(this::isActive)
+                .mapToLong(b -> overlapMinutes(b, from, to))
+                .sum();
+    }
+
+    private long getCapacity(Resource resource) {
+        if (resource instanceof Device device) {
+            return device.getQuantity();
+        }
+        return 1;
     }
 
     private boolean isActive(Booking booking) {
