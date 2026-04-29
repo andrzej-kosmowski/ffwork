@@ -3,26 +3,27 @@ package domain.resource;
 import money.Money;
 
 import java.util.Objects;
+import java.util.Optional;
 
 public abstract class Resource {
     private final String name;
-    private final Money customHourlyRate;
+    private final Optional<Money> customHourlyRate;
 
     public Resource(String name) {
         this.name = name;
-        this.customHourlyRate = null;
+        this.customHourlyRate = Optional.empty();
     }
 
     public Resource(String name, Money customHourlyRate) {
         this.name = Objects.requireNonNull(name, "name cannot be null");
-        this.customHourlyRate = customHourlyRate;
+        this.customHourlyRate = Optional.ofNullable(customHourlyRate);
     }
 
     public String getName() {
         return name;
     }
 
-    public Money getCustomHourlyRate() {
+    public Optional<Money> getCustomHourlyRate() {
         return customHourlyRate;
     }
 
@@ -31,6 +32,7 @@ public abstract class Resource {
     public abstract String describe();
 
     public Money hourlyRate() {
-        return customHourlyRate != null? customHourlyRate : baseRatePerHour();
+        return customHourlyRate
+                .orElseGet(this::baseRatePerHour);
     }
 }
