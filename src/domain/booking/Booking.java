@@ -8,6 +8,8 @@ import money.Money;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
+import static java.time.Duration.between;
+
 public class Booking {
     private final String id;
     private final User user;
@@ -33,8 +35,8 @@ public class Booking {
         this.payment = null;
     }
 
-    public int durationMinutes() {
-        return (int) Duration.between(start, end).toMinutes();
+    public long durationMinutes() {
+        return  Duration.between(start, end).toMinutes();
     }
 
     public void confirm() {
