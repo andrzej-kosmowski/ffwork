@@ -21,6 +21,10 @@ public class PaymentService {
             throw new IllegalStateException("Payment allowed only for CONFIRMED bookings");
         }
 
+        if (booking.getPayment() != null) {
+            throw new IllegalStateException("Booking already paid");
+        }
+
         CardPayment payment = new CardPayment(
                 booking.getCalculatedPrice(),
                 bookingId,
