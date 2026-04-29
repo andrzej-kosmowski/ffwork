@@ -48,7 +48,7 @@ public class BookingService {
             throw new IllegalStateException("Only PENDING can be confirmed");
         }
 
-        booking.setStatus(BookingStatus.CONFIRMED);
+        booking.confirm();
     }
 
     public void cancel(String bookingId) {
@@ -57,7 +57,7 @@ public class BookingService {
             throw new IllegalStateException("Cannot cancel completed booking");
         }
 
-        booking.setStatus(BookingStatus.CANCELLED);
+        booking.cancel();
     }
 
     public void complete(String bookingId) {
@@ -66,7 +66,7 @@ public class BookingService {
             throw new IllegalStateException("Only CONFIRMED can be completed");
         }
 
-        booking.setStatus(BookingStatus.COMPLETED);
+        booking.complete();
     }
 
     public List<Booking> list() {
@@ -125,5 +125,4 @@ public class BookingService {
         return bookingRepo.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Booking not found: " + id));
     }
-
 }
