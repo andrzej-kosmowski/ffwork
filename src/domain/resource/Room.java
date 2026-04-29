@@ -5,6 +5,8 @@ import money.Money;
 import java.util.Set;
 
 public class Room extends Resource {
+    private static final Money BASE_RATE = Money.of("15.00");
+
     private final int seats;
     private final Set<String> equipment;
 
@@ -22,7 +24,7 @@ public class Room extends Resource {
 
     @Override
     protected Money baseRatePerHour() {
-        return Money.of(15);
+        return BASE_RATE;
     }
 
     @Override

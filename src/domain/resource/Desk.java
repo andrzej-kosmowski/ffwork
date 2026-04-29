@@ -3,6 +3,9 @@ package domain.resource;
 import money.Money;
 
 public class Desk extends Resource {
+    private static final Money FIXED_BASE_RATE = Money.of("25.00");
+    private static final Money HOT_BASE_RATE = Money.of("25.00");
+
     private final DeskType type;
 
     public Desk(String name, DeskType type) {
@@ -17,7 +20,7 @@ public class Desk extends Resource {
 
     @Override
     protected Money baseRatePerHour() {
-        return type == DeskType.FIXED ? Money.of(25) : Money.of(40);
+        return type == DeskType.FIXED ? FIXED_BASE_RATE : HOT_BASE_RATE;
     }
 
     @Override
