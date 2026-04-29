@@ -14,8 +14,8 @@ public class InMemoryBookingRepository implements BookingRepository {
 
 
     @Override
-    public void add(Booking b) {
-        bookings.put(b.getId(), b);
+    public void add(Booking booking) {
+        bookings.put(booking.getId(), booking);
     }
 
     @Override
@@ -31,18 +31,18 @@ public class InMemoryBookingRepository implements BookingRepository {
     }
 
     @Override
-    public List<Booking> findByResource(Resource r) {
+    public List<Booking> findByResource(Resource resource) {
         return bookings.values()
                 .stream()
-                .filter(b -> b.getResource().equals(r))
+                .filter(b -> b.getResource().equals(resource))
                 .toList();
     }
 
     @Override
-    public List<Booking> findByUser(User u) {
+    public List<Booking> findByUser(User user) {
         return bookings.values()
                 .stream()
-                .filter(b -> b.getUser().equals(u))
+                .filter(b -> b.getUser().equals(user))
                 .toList();
     }
 }
