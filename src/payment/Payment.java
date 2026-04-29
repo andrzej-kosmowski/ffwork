@@ -29,7 +29,7 @@ public abstract class Payment {
         return status;
     }
 
-    public void setStatus(PaymentStatus status) {
+    protected void setStatus(PaymentStatus status) {
         this.status = status;
     }
 }
